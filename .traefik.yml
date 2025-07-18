@@ -3,10 +3,23 @@ package: github.com/Ju0x/traefik-security-txt
 displayName: "Security.txt"
 description: "Providing a security.txt with Traefik"
 summary: "This plugin provides a configured security.txt as defined in RFC9116."
+iconPath: .assets/icon.png
 
 testData:
-  headers:
-    Foo: Bar
+  Contact:
+    - "mailto:test@example.test"
+    - "https://example.test/contact"
+  Expires: "2026-12-31T23:59:00.000Z"
+  Encryption: "https://example.test/pgp-key.txt"
+  Acknowledgements: "https://example.test/hall-of-fame.html"
+  PreferredLanguages: "en, de, dk"
+  Policy:
+    - "https://example.test/security-policy.html"
+    - "https://bughunter.example.test/security-policy.html"
+  Hiring: "https://example.test/jobs.html"
+  CSAF: 
+    - "https://example.test/.well-known/csaf/provider-metadata.json"
+    - "https://example.test/csaf/provider-metadata.json"
 
 import: github.com/Ju0x/traefik-security-txt
 type: middleware
