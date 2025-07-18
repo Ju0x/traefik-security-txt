@@ -46,9 +46,9 @@ http:
     security-txt-plugin:
       plugin:
         security-txt:
-            Contact: "mailto:test@example.test"
-            Expires: "2026-12-31T23:59:00.000Z"
-            PreferredLanguages: "en, de, dk"
+            contact: "mailto:test@example.test"
+            expires: "2026-12-31T23:59:00.000Z"
+            preferredLanguages: "en, de, dk"
 ```
 
 ### Result:
@@ -70,18 +70,18 @@ middlewares:
   security-txt-plugin:
     plugin:
       security-txt:
-        Contact:
+        contact:
             - "mailto:test@example.test"
             - "https://example.test/contact"
-        Expires: "2026-12-31T23:59:00.000Z"
-        Encryption: "https://example.test/pgp-key.txt"
-        Acknowledgements: "https://example.test/hall-of-fame.html"
-        PreferredLanguages: "en, de, dk"
-        Policy:
+        expires: "2026-12-31T23:59:00.000Z"
+        encryption: "https://example.test/pgp-key.txt"
+        acknowledgements: "https://example.test/hall-of-fame.html"
+        preferredLanguages: "en, de, dk"
+        policy:
             - "https://example.test/security-policy.html"
             - "https://bughunter.example.test/security-policy.html"
-        Hiring: "https://example.test/jobs.html"
-        CSAF: 
+        hiring: "https://example.test/jobs.html"
+        csaf: 
             - "https://example.test/.well-known/csaf/provider-metadata.json"
             - "https://example.test/csaf/provider-metadata.json"
 ```
