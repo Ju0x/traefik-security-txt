@@ -51,6 +51,15 @@ http:
             PreferredLanguages: "en, de, dk"
 ```
 
+### Result:
+
+`/.well-known/security.txt` or `/security.txt`
+```
+Contact: mailto:test@example.test
+Expires: 2026-12-31T23:59:00.000Z
+Preferred-Languages: en, de, dk
+```
+
 
 ## Example of a more complex configuration
 
@@ -77,6 +86,24 @@ middlewares:
             - "https://example.test/csaf/provider-metadata.json"
 ```
 
+### Result
+
+`/.well-known/security.txt` or `/security.txt`
+```
+Contact: mailto:test@example.test
+Contact: https://example.test/contact
+Expires: 2026-12-31T23:59:00.000Z
+Encryption: https://example.test/pgp-key.txt
+Acknowledgements: https://example.test/hall-of-fame.html
+Preferred-Languages: en, de, dk
+Policy: https://example.test/security-policy.html
+Policy: https://bughunter.example.test/security-policy.html
+Hiring: https://example.test/jobs.html
+CSAF: https://example.test/.well-known/csaf/provider-metadata.json
+CSAF: https://example.test/csaf/provider-metadata.json
+```
+
+
 ## TODO
 
-    - Add the Canonical field and make it possible to sign the contents of the security.txt
+- Add the Canonical field and make it possible to sign the contents of the security.txt
