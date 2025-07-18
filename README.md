@@ -1,2 +1,2 @@
-# traefik-securitytxt
-Traefik middleware serving a robots.txt (RFC9116)
+# traefik-security-txt
+Traefik middleware plugin serving a security.txt (RFC9116)
