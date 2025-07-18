@@ -1,0 +1,12 @@
+package: github.com/Ju0x/traefik-security-txt
+
+displayName: "Security.txt"
+description: "Providing a security.txt with Traefik"
+summary: "This plugin provides a configured security.txt as defined in RFC9116."
+
+testData:
+  headers:
+    Foo: Bar
+
+import: github.com/Ju0x/traefik-security-txt
+type: middleware
