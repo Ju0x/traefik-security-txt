@@ -8,20 +8,28 @@ import (
 	"strings"
 )
 
+/*
+	Traefik plugin to serve the security.txt defined by RFC9116 (https://datatracker.ietf.org/doc/html/rfc9116)
+	Generate a security.txt here: https://securitytxt.org/
+*/
+
+var securitytxt = []byte{}
+
 type (
 	Config struct {
-		// Link or E-Mail Address, include https:// for links and mailto: for E-Mail Adresses
 		Contact []string `json:"contact"`
 
-		// Expiring date in ISO 8601 format (For example: 2026-12-31T23:59:00.000Z)
+		// Must follow ISO 8601 (for example 2026-12-31T23:59:00.000Z)
 		Expires            string   `json:"expires"`
 		Encryption         []string `json:"encryption,omitempty"`
 		Acknowledgements   []string `json:"acknowledgements,omitempty"`
 		PreferredLanguages string   `json:"preferredLanguages,omitempty"`
-		// CanonicalURL []string `json:"canonicalURL,omitempty"`
+		// Canonical []string `json:"canonical,omitempty"`
 		Policy []string `json:"policy,omitempty"`
 		Hiring []string `json:"hiring,omitempty"`
-		CSAF   []string `json:"csaf,omitempty"`
+
+		// Not defined by the RFC but available at https://securitytxt.org/, extended fields are allowed for the security.txt
+		CSAF []string `json:"csaf,omitempty"`
 
 		// TODO: Provide some method to digitally sign the security.txt
 	}
@@ -91,7 +99,12 @@ func (p *Plugin) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// We use both paths to ensure that the file is found.
 	if path == "/security.txt" || path == "/.well-known/security.txt" {
 		w.Header().Set("Content-Type", "text/plain")
-		w.Write(p.generateSecurityTxt())
+
+		if len(securitytxt) == 0 {
+			securitytxt = p.generateSecurityTxt()
+		}
+
+		w.Write(securitytxt)
 		return
 	}
 
